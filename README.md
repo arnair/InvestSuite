@@ -17,6 +17,8 @@ The portfolio updates using real market values from the API.
 
 I didn't add the `.env` file to `.gitignore`, so you won't need to manually enter the free API key.
 
+I developed and tested the app using the Pixel 9 Pro simulator.
+
 ---
 
 ## 🚀 Getting Started

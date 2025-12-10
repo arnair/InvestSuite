@@ -1,0 +1,54 @@
+name: investsuite
+description: "A Flutter application that simulates a financial portfolio overview."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  
+  # Immutable Data Classes
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  
+  # Navigation
+  auto_route: ^9.3.0
+  
+  # gRPC & Protobuf
+  grpc: ^4.1.0
+  protobuf: ^3.1.0
+  fixnum: ^1.1.1
+  
+  # Charts
+  fl_chart: ^0.69.2
+  
+  # UI
+  google_fonts: ^6.3.3
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Code Generation
+  build_runner: ^2.5.4
+  freezed: ^2.5.8
+  json_serializable: ^6.9.5
+  riverpod_generator: ^2.6.4
+  auto_route_generator: ^9.3.1
+  
+  # Testing
+  mocktail: ^1.0.4
+  
+  # Linting
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

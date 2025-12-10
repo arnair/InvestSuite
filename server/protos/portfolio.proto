@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package investsuite;
+
+// Asset represents a financial asset in the portfolio
+message Asset {
+  string id = 1;
+  string symbol = 2;
+  string name = 3;
+  AssetType type = 4;
+  double current_price = 5;
+  double percent_change = 6;
+  double quantity = 7;
+  double total_value = 8;
+}
+
+// AssetType enum for different asset categories
+enum AssetType {
+  ASSET_TYPE_UNSPECIFIED = 0;
+  ASSET_TYPE_STOCK = 1;
+  ASSET_TYPE_CRYPTO = 2;
+}
+
+// Portfolio represents the entire user portfolio
+message Portfolio {
+  string id = 1;
+  string name = 2;
+  repeated Asset assets = 3;
+  double total_value = 4;
+  double total_percent_change = 5;
+}
+
+// PerformanceDataPoint for charting portfolio value over time
+message PerformanceDataPoint {
+  int64 timestamp = 1;  // Unix timestamp in milliseconds
+  double value = 2;
+}
+
+// PerformanceHistory contains historical performance data
+message PerformanceHistory {
+  string portfolio_id = 1;
+  repeated PerformanceDataPoint data_points = 2;
+  double min_value = 3;
+  double max_value = 4;
+}
+
+// Request messages
+message GetPortfolioRequest {
+  string portfolio_id = 1;
+}
+
+message GetPerformanceHistoryRequest {
+  string portfolio_id = 1;
+  TimeRange time_range = 2;
+}
+
+// TimeRange enum for performance history
+enum TimeRange {
+  TIME_RANGE_UNSPECIFIED = 0;
+  TIME_RANGE_1D = 1;
+  TIME_RANGE_1W = 2;
+  TIME_RANGE_1M = 3;
+  TIME_RANGE_3M = 4;
+  TIME_RANGE_1Y = 5;
+}
+
+// Response messages
+message GetPortfolioResponse {
+  Portfolio portfolio = 1;
+}
+
+message GetPerformanceHistoryResponse {
+  PerformanceHistory history = 1;
+}
+
+// Portfolio service definition
+service PortfolioService {
+  rpc GetPortfolio(GetPortfolioRequest) returns (GetPortfolioResponse);
+  rpc GetPerformanceHistory(GetPerformanceHistoryRequest) returns (GetPerformanceHistoryResponse);
+}
